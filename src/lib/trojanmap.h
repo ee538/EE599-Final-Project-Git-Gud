@@ -72,6 +72,7 @@ class TrojanMap {
 
   // Returns a vector of names given a partial name.
   std::vector<std::string> Autocomplete(std::string name);
+  std::vector<std::string> Autocomplete_any(std::string name);
 
   // Returns lat and long of the given the name.
   std::pair<double, double> GetPosition(std::string name);
@@ -81,6 +82,9 @@ class TrojanMap {
   std::vector<std::string> CalculateShortestPath(std::string location1_name,
                                                  std::string location2_name);
 
+  std::vector<std::string> CalculateShortestPath_bell(std::string location1_name,
+                                                 std::string location2_name);
+
   // Given a vector of location ids, it should reorder them such that the path
   // that covers all these points has the minimum length.
   // The return value is a pair where the first member is the total_path,
@@ -88,6 +92,12 @@ class TrojanMap {
   // (Notice that we don't find the optimal answer. You can return an estimated
   // path.)
   std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan(
+      std::vector<std::string> &location_ids);
+
+  std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_2opt(
+      std::vector<std::string> &location_ids);
+  
+  std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_3opt(
       std::vector<std::string> &location_ids);
 
   //-----------------------------------------------------
